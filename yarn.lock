@@ -249,9 +249,9 @@
   "version" "0.0.29"
 
 "@types/node@*":
-  "integrity" "sha512-tx5jMmMFwx7wBwq/V7OohKDVb/JwJU5qCVkeLMh1//xycAJ/ESuw9aJ9SEtlCZDYi2pBfe4JkisSoAtbOsBNAA=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.29.tgz"
-  "version" "17.0.29"
+  "integrity" "sha512-oNBIZjIqyHYP8VCNAV9uEytXVeXG2oR0w9lgAXro20eugRQfY002qr3CUl6BAe+Yf/z3CRjPdz27Pu6WWtuSRw=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.30.tgz"
+  "version" "17.0.30"
 
 "@types/prop-types@*":
   "integrity" "sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w=="
@@ -450,7 +450,7 @@
   "resolved" "https://registry.npmjs.org/axobject-query/-/axobject-query-2.2.0.tgz"
   "version" "2.2.0"
 
-"babel-plugin-styled-components@>= 1.12.0":
+"babel-plugin-styled-components@^2.0.7", "babel-plugin-styled-components@>= 1.12.0":
   "integrity" "sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA=="
   "resolved" "https://registry.npmjs.org/babel-plugin-styled-components/-/babel-plugin-styled-components-2.0.7.tgz"
   "version" "2.0.7"
@@ -1883,10 +1883,10 @@
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
 
-"r-componentsxxxxxxxxxxx@^0.1.10":
-  "integrity" "sha512-h66cVKvUx4l7yc6IAlqMbziBrML2AFfipWOnXAGvSmz5mrP/R43QnrX10jFCJbn2UC0Doyyz1PAv/rAnd0xAuQ=="
-  "resolved" "https://registry.npmjs.org/r-componentsxxxxxxxxxxx/-/r-componentsxxxxxxxxxxx-0.1.10.tgz"
-  "version" "0.1.10"
+"r-componentsxxxxxxxxxxx@^0.1.14":
+  "integrity" "sha512-umx3Seo5o9RIYm7DqQMcnjgiApySMsGyPTBJYl7nYinss7xC0cDdf+CcK+AffGeYZNwQqk3evyXz+ixjmqj92Q=="
+  "resolved" "https://registry.npmjs.org/r-componentsxxxxxxxxxxx/-/r-componentsxxxxxxxxxxx-0.1.14.tgz"
+  "version" "0.1.14"
   dependencies:
     "@emailjs/browser" "^3.4.0"
     "@types/styled-components" "^5.1.24"

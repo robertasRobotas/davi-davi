@@ -1,5 +1,6 @@
 import { Navbar, Footer } from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
+import { createClient } from "contentful";
 
 export default function Galerija({
   mainPage: {
@@ -53,6 +54,19 @@ export default function Galerija({
         socialHoverColor="#6e6e6e"
         letterSpacing="2px"
       />
+      <div>
+        {" "}
+        <Button
+          type="underlined-botton"
+          mainColor="#707070"
+          invertedColor="white"
+          fontSize="16px"
+          content="GALERIJA"
+          width="125px"
+          height="45px"
+          onClick={() => console.log("c")}
+        />
+      </div>
     </div>
   );
 }

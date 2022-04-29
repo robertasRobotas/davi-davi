@@ -3,14 +3,18 @@ import {
   PhotoSlider,
   AboutUsSection,
   Footer,
+  Button,
+  PhotoLine,
 } from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 240px;
+  padding-bottom: 240px;
+  padding-right: 20px;
+  padding-left: 20px;
   color: #968068;
 `;
 
@@ -21,6 +25,17 @@ const HeaderTitleWrapper = styled.div`
 
 const HeaderTextWrapper = styled.div`
   text-align: center;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+`;
+
+const PhotoLineWrapper = styled.div`
+  margin-bottom: 120px;
 `;
 
 export default function Home({
@@ -36,7 +51,7 @@ export default function Home({
   const photoArray = headerPhotos.map((photo) => photo.fields.file.url);
   const oneDimentionalMenuLinks = [
     { title: "GALERIJA", link: "/galerija" },
-    { title: "PASIŪLYMAI", link: "/pasiūlymai" },
+    { title: "PASIŪLYMAI", link: "/pasiulymai" },
     { title: "KALENDORIUS", link: "/kalendorius" },
     { title: "KONTAKTAI", link: "/kontaktai" },
   ];
@@ -73,20 +88,29 @@ export default function Home({
       <AboutUsSection
         type="simple-section"
         photo={aboutMePhoto.fields.file.url}
-        title="LABAS!"
-        text={`esu Morta ir savo mylimo vyro dėka tapau davidavi (-čiene). 
-
-        Meilė fotografijai atsirado visai nejučia nuo pat mažų dienų, kai sekiodavau tėtį, kad jam įamžinus šeimą, būčiau pirmoji jį pakeisianti fotografė. Be viso to, nevengiau ir sunkaus darbo – trikojo nešiojimo. (: 
-       Paauglystėje kone puse vakarų baigdavosi žiūrint šeimos albumus ir skaitmenines galerijas. Tai galiausiai išsirutuliojo į troškimą pačiai įamžinti savo ir artimųjų gyvenimą.
-        Nors, rodos, viskas nuo pat mažų dienų vedė link ten, kur esu dabar, vis dėlto tik studijų laikais galutinai susivokiau, kad fotografija yra tai, kas įkvepia ir kam noriu skirti savo jėgas ir laiką.
-      Tad šiandien esu ne tik diplomuota, bet ir 5 metus savo darbu besimėgaujanti fotografė.
-       Esu iš Vilniaus, bet atvyksiu visur, kur tik pasikviesi švęsti Tavo gyvenimą kartu! 
-      Kai šypsenos platės ir ašaros riedės, būsiu šalia ir visa tai įamžinsiu..!`}
+        title={aboutMeTitle}
+        text={aboutMeText}
         mobileVersionMaxWidth="767px"
         backgroundColor="#DFE4ED"
         photoWidth="400px"
         photoHeight="600px"
       />
+
+      <ButtonWrapper>
+        <Button
+          type="underlined-botton"
+          mainColor="#707070"
+          invertedColor="white"
+          fontSize="16px"
+          content="GALERIJA"
+          width="125px"
+          height="45px"
+          onClick={() => console.log("c")}
+        />
+      </ButtonWrapper>
+      <PhotoLineWrapper>
+        <PhotoLine photoArray={photoArray} mobileVersionMaxWidth="767px" />
+      </PhotoLineWrapper>
 
       <Footer
         type="logo-contacts-footer"
