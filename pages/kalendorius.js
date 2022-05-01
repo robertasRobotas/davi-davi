@@ -1,28 +1,53 @@
-import { Navbar, Footer } from "r-componentsxxxxxxxxxxx";
+import { Navbar, Button, Footer, Calendar } from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
+import styled from "styled-components";
+
+const HeaderWrapper = styled.div`
+  height: 1200px;
+  background-color: #dfe4ed;
+`;
+
+const PageTitle = styled.div`
+  text-align: center;
+`;
+
+const PageStatement = styled.div`
+  text-align: center;
+`;
+
+const PageText = styled.div`
+  text-align: center;
+`;
+
+const Separator = styled.hr`
+  text-align: center;
+`;
+
+const CalendarWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 30px;
+  justify-content: center;
+`;
 
 export default function Kalendorius({
-  mainPage: {
-    headerPhotos,
-    headerTitle,
-    headerText,
-    aboutMeTitle,
-    aboutMeText,
-    aboutMePhoto,
+  calendarPage: {
+    pageTitle,
+    pageStatement,
+    pageText,
+    bottomPhoto,
+    calendar,
+    navbar,
+    footer,
   },
 }) {
+  console.log("calendar", calendar);
   const oneDimentionalMenuLinks = [
     { title: "GALERIJA", link: "/galerija" },
     { title: "PASIŪLYMAI", link: "/pasiūlymai" },
     { title: "KALENDORIUS", link: "/kalendorius" },
     { title: "KONTAKTAI", link: "/kontaktai" },
-  ];
-
-  const socialMedia = [
-    { type: "facebook", link: "https://www.facebook.com/home.php" },
-    { type: "instagram", link: "https://www.instagram.com/" },
-    { type: "gmail", link: "https://mail.google.com/mail/u/0/#inbox" },
   ];
 
   return (
@@ -37,36 +62,42 @@ export default function Kalendorius({
         minWebsiteWidth="400px"
         fontSize="16px"
       />
+      <HeaderWrapper>
+        <PageTitle>{pageTitle}</PageTitle>
+        <PageStatement>{pageStatement}</PageStatement>
+        <PageText>{pageText}</PageText>
+        <Separator />
+      </HeaderWrapper>
       <Footer
         type="logo-contacts-footer"
-        socialMedia={socialMedia}
+        socialMedia={footer.fields.socialMedia}
         maxWidth="1200px"
         mobileVersionMaxWidth="767px"
         backgroundColor="#DFE4ED"
         logoSrc={logo.src}
         logoWidthPx={200}
         fontSize="16px"
-        email="davidavi.morta@gmail.com"
-        phoneNumber="+370 607 58455"
-        copyRight="© davidavi 2022"
+        email={footer.fields.email}
+        phoneNumber={footer.fields.phoneNumber}
+        copyRight={footer.fields.copyMark}
         minWebsiteWidth={"375px"}
         color="#3E3E3E"
         socialHoverColor="#6e6e6e"
         letterSpacing="2px"
       />
-      <div>
-        {" "}
-        <Button
-          type="underlined-botton"
-          mainColor="#707070"
-          invertedColor="white"
-          fontSize="16px"
-          content="GALERIJA"
-          width="125px"
-          height="45px"
-          onClick={() => console.log("c")}
+
+      {calendar.map((date) => (
+        <Calendar
+          key={date.sys.id}
+          type="availability-of-specific-month"
+          displayYearMonth="2022-05"
+          bookedDays={["2022-05-03", "2022-05-08", "2022-05-14"]}
+          monthDayNames={["P", "A", "T", "K", "P", "Š", "S"]}
+          isDisplaymonth={false}
+          isDisplayYear={false}
+          monthLinesNumber={6}
         />
-      </div>
+      ))}
     </div>
   );
 }
@@ -77,11 +108,12 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries({ content_type: "mainPage" });
+  const res = await client.getEntries({ content_type: "calendarPage" });
+  console.log(res);
 
   return {
     props: {
-      mainPage: res.items[0].fields,
+      calendarPage: res.items[0].fields,
     },
   };
 }

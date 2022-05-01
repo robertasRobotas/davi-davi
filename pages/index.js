@@ -46,27 +46,17 @@ export default function Home({
     aboutMeTitle,
     aboutMeText,
     aboutMePhoto,
+    footer,
+    navbar,
   },
 }) {
   const photoArray = headerPhotos.map((photo) => photo.fields.file.url);
-  const oneDimentionalMenuLinks = [
-    { title: "GALERIJA", link: "/galerija" },
-    { title: "PASIŪLYMAI", link: "/pasiulymai" },
-    { title: "KALENDORIUS", link: "/kalendorius" },
-    { title: "KONTAKTAI", link: "/kontaktai" },
-  ];
-
-  const socialMedia = [
-    { type: "facebook", link: "https://www.facebook.com/home.php" },
-    { type: "instagram", link: "https://www.instagram.com/" },
-    { type: "gmail", link: "https://mail.google.com/mail/u/0/#inbox" },
-  ];
 
   return (
     <div>
       <Navbar
         type="logo-middle-navbar"
-        oneDimentionalMenuLinks={oneDimentionalMenuLinks}
+        oneDimentionalMenuLinks={navbar.fields.navbarConfig}
         maxWidth={"1200px"}
         mobileVersionMaxWidth="767px"
         logoSrc={logo.src}
@@ -114,16 +104,16 @@ export default function Home({
 
       <Footer
         type="logo-contacts-footer"
-        socialMedia={socialMedia}
+        socialMedia={footer.fields.socialMedia}
         maxWidth="1200px"
         mobileVersionMaxWidth="767px"
         backgroundColor="#DFE4ED"
         logoSrc={logo.src}
         logoWidthPx={200}
         fontSize="16px"
-        email="davidavi.morta@gmail.com"
-        phoneNumber="+370 607 58455"
-        copyRight="© davidavi 2022"
+        email={footer.fields.email}
+        phoneNumber={footer.fields.phoneNumber}
+        copyRight={footer.fields.copyMark}
         minWebsiteWidth={"375px"}
         color="#3E3E3E"
         socialHoverColor="#6e6e6e"
