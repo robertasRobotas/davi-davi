@@ -17,37 +17,20 @@ const PageTitle = styled.div`
   padding-right: 30px;
 `;
 
-const PageStatement = styled.div`
-  text-align: center;
-  padding-top: 50px;
-  padding-left: 30px;
-  padding-right: 30px;
-`;
-
-const HeaderWrapper = styled.div`
-  height: 800px;
-`;
-
-const Separator = styled.hr`
-  text-align: center;
-  margin-top: 25px;
-  width: 200px;
-`;
-
 export default function Offers({
-  mainPage: {
-    headerPhotos,
-    headerTitle,
-    headerText,
-    aboutMeTitle,
-    aboutMeText,
-    aboutMePhoto,
+  offerPage: {
+    pageTitle,
+    pageText,
+    wedingTitle,
+    weddingText,
+    weddingOffers,
+    otherOffers,
     footer,
     navbar,
+    familiesText,
+    familiesTitle,
   },
 }) {
-  const photoArray = headerPhotos.map((photo) => photo.fields.file.url);
-
   return (
     <div>
       <Navbar
@@ -61,11 +44,6 @@ export default function Offers({
         fontSize="16px"
       />
 
-      <HeaderWrapper>
-        <PageTitle></PageTitle>
-        <PageStatement></PageStatement>
-        <Separator />
-      </HeaderWrapper>
       <Footer
         type="logo-contacts-footer"
         socialMedia={footer.fields.socialMedia}
@@ -93,11 +71,11 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries({ content_type: "mainPage" });
+  const res = await client.getEntries({ content_type: "offerPage" });
 
   return {
     props: {
-      mainPage: res.items[0].fields,
+      offerPage: res.items[0].fields,
     },
   };
 }
