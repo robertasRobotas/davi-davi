@@ -4,31 +4,49 @@ import { createClient } from "contentful";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
-  height: 1200px;
+  height: 110vh;
   background-color: #dfe4ed;
 `;
 
 const PageTitle = styled.div`
   text-align: center;
+  padding-top: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 const PageStatement = styled.div`
   text-align: center;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 const PageText = styled.div`
   text-align: center;
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+  line-height: 1.6;
 `;
 
 const Separator = styled.hr`
   text-align: center;
+  margin-top: 25px;
+  width: 200px;
 `;
 
 const CalendarWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
-  gap: 30px;
+  position: relative;
+  bottom: 150px;
+  grid-template-columns: 40% 40%;
+  gap: 50px;
   justify-content: center;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 90%;
+
 `;
 
 export default function Kalendorius({
@@ -42,19 +60,13 @@ export default function Kalendorius({
     footer,
   },
 }) {
-  console.log("calendar", calendar);
-  const oneDimentionalMenuLinks = [
-    { title: "GALERIJA", link: "/galerija" },
-    { title: "PASIŪLYMAI", link: "/pasiūlymai" },
-    { title: "KALENDORIUS", link: "/kalendorius" },
-    { title: "KONTAKTAI", link: "/kontaktai" },
-  ];
+  console.log("navbar", navbar);
 
   return (
     <div>
       <Navbar
         type="logo-middle-navbar"
-        oneDimentionalMenuLinks={oneDimentionalMenuLinks}
+        oneDimentionalMenuLinks={navbar.fields.navbarConfig}
         maxWidth={"1200px"}
         mobileVersionMaxWidth="767px"
         logoSrc={logo.src}
@@ -68,6 +80,21 @@ export default function Kalendorius({
         <PageText>{pageText}</PageText>
         <Separator />
       </HeaderWrapper>
+
+      <CalendarWrapper>
+        {calendar.map((date) => (
+          <Calendar
+            key={date.sys.id}
+            type="availability-of-specific-month"
+            displayYearMonth="2022-05"
+            bookedDays={["2022-05-03", "2022-05-08", "2022-05-14"]}
+            monthDayNames={["P", "A", "T", "K", "P", "Š", "S"]}
+            isDisplaymonth={false}
+            isDisplayYear={false}
+            monthLinesNumber={6}
+          />
+        ))}
+      </CalendarWrapper>
       <Footer
         type="logo-contacts-footer"
         socialMedia={footer.fields.socialMedia}
@@ -85,19 +112,6 @@ export default function Kalendorius({
         socialHoverColor="#6e6e6e"
         letterSpacing="2px"
       />
-
-      {calendar.map((date) => (
-        <Calendar
-          key={date.sys.id}
-          type="availability-of-specific-month"
-          displayYearMonth="2022-05"
-          bookedDays={["2022-05-03", "2022-05-08", "2022-05-14"]}
-          monthDayNames={["P", "A", "T", "K", "P", "Š", "S"]}
-          isDisplaymonth={false}
-          isDisplayYear={false}
-          monthLinesNumber={6}
-        />
-      ))}
     </div>
   );
 }

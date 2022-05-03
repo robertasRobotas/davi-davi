@@ -1883,10 +1883,10 @@
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
 
-"r-componentsxxxxxxxxxxx@^0.1.14":
-  "integrity" "sha512-umx3Seo5o9RIYm7DqQMcnjgiApySMsGyPTBJYl7nYinss7xC0cDdf+CcK+AffGeYZNwQqk3evyXz+ixjmqj92Q=="
-  "resolved" "https://registry.npmjs.org/r-componentsxxxxxxxxxxx/-/r-componentsxxxxxxxxxxx-0.1.14.tgz"
-  "version" "0.1.14"
+"r-componentsxxxxxxxxxxx@^0.1.45":
+  "integrity" "sha512-iGAFHBgRebS5VrBlTFLVd7cUWHMzjoZmPmeJxhMXqyzosAD3xqHHxpgyLfI/OnYc9xB6kxHtrF5bZ3dMCVgEMQ=="
+  "resolved" "https://registry.npmjs.org/r-componentsxxxxxxxxxxx/-/r-componentsxxxxxxxxxxx-0.1.45.tgz"
+  "version" "0.1.45"
   dependencies:
     "@emailjs/browser" "^3.4.0"
     "@types/styled-components" "^5.1.24"
