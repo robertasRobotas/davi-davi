@@ -1,20 +1,47 @@
-import {
-  Navbar,
-  PhotoSlider,
-  AboutUsSection,
-  Footer,
-  Button,
-  PhotoLine,
-} from "r-componentsxxxxxxxxxxx";
+import { Navbar, Footer, ServiceCards } from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
+
+const HeaderWrapper = styled.div`
+  height: 90vh;
+`;
 
 const PageTitle = styled.div`
   text-align: center;
   padding-top: 100px;
   padding-left: 30px;
   padding-right: 30px;
+`;
+
+const PageStatement = styled.div`
+  text-align: center;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+`;
+
+const ServiceStatement = styled.div`
+  text-align: center;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.8;
+  margin-bottom: 100px;
+`;
+
+const Separator = styled.hr`
+  text-align: center;
+  margin-top: 25px;
+  width: 200px;
+`;
+
+const WeddingWrapper = styled.div``;
+
+const OtherWrapper = styled.div`
+  margin-bottom: 100px;
 `;
 
 export default function Offers({
@@ -31,6 +58,25 @@ export default function Offers({
     familiesTitle,
   },
 }) {
+  console.log(weddingOffers);
+
+  const modifiedWeddingOffers = weddingOffers.map((offer) => {
+    return {
+      price: offer.fields.offerTitle,
+      services: offer.fields.statement,
+      photo: offer.fields.offerPhoto.fields.file.url,
+    };
+  });
+
+  const modifiedOtherOffers = otherOffers.map((offer) => {
+    return {
+      price: offer.fields.offerTitle,
+      services: offer.fields.statement,
+      photo: offer.fields.offerPhoto.fields.file.url,
+    };
+  });
+
+  console.log("modifiedWeddingOffers", modifiedWeddingOffers);
   return (
     <div>
       <Navbar
@@ -43,6 +89,37 @@ export default function Offers({
         minWebsiteWidth="400px"
         fontSize="16px"
       />
+      <HeaderWrapper>
+        <PageTitle>{pageTitle}</PageTitle>
+        <PageStatement>{pageText.content[0].content[0].value}</PageStatement>
+        <PageStatement>{pageText.content[1].content[0].value}</PageStatement>
+
+        <Separator />
+      </HeaderWrapper>
+      <WeddingWrapper>
+        <PageTitle>{wedingTitle}</PageTitle>
+        <ServiceStatement>
+          {weddingText.content[0].content[0].value}
+        </ServiceStatement>
+        <ServiceCards
+          type="simple-card"
+          cardsArray={modifiedWeddingOffers}
+          mobileVersionMaxWidth="767px"
+          backgroundColor="#DFE4ED"
+        />
+      </WeddingWrapper>
+      <OtherWrapper>
+        <PageTitle>{familiesTitle}</PageTitle>
+        <ServiceStatement>
+          {familiesText.content[0].content[0].value}
+        </ServiceStatement>
+        <ServiceCards
+          type="reverse-simple-card"
+          cardsArray={modifiedOtherOffers}
+          mobileVersionMaxWidth="767px"
+          backgroundColor="#DFE4ED"
+        />
+      </OtherWrapper>
 
       <Footer
         type="logo-contacts-footer"
