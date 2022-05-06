@@ -1,7 +1,16 @@
-import { Navbar, Footer, EmailForm } from "r-componentsxxxxxxxxxxx";
+import {
+  Navbar,
+  Footer,
+  EmailForm,
+  SocialIcons,
+} from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
+
+const Wrapper = styled.div`
+  background-color: rgba(233, 235, 240, 0.3);
+`;
 
 const ContentWrapper = styled.div`
   display: grid;
@@ -39,20 +48,32 @@ const PhotoWrapper = styled.div`
 const Photo = styled.div`
   height: 500px;
   background-image: ${(props) => `url(${props.photoUrl})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
-const submitButton = (
-  <div
-    style={{
-      width: "100px",
-      height: "30px",
-      backgroundColor: "blue",
-      color: "white",
-    }}
-  >
-    Send
-  </div>
-);
+const Button = styled.div`
+  display: flex;
+  width: 120px;
+  height: 40px;
+  border: 1px solid #968068;
+  color: #968068;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #968068;
+    color: white;
+  }
+`;
+
+const SocialWrapper = styled.div`
+  width: 80px;
+`;
+
+const submitButton = <Button>Send</Button>;
 
 export default function Offers({
   contactsPage: {
@@ -69,9 +90,13 @@ export default function Offers({
     photo,
   },
 }) {
+  const socialMedia = [
+    { type: "facebook", link: "https://www.facebook.com/home.php" },
+    { type: "instagram", link: "https://www.instagram.com/" },
+  ];
   console.log("photo", photo);
   return (
-    <div>
+    <Wrapper>
       <Navbar
         type="logo-middle-navbar"
         oneDimentionalMenuLinks={navbar.fields.navbarConfig}
@@ -92,9 +117,9 @@ export default function Offers({
             namePlaceholder={nameInputPlaceholder}
             emailPlaceholder={emailInputPlaceholder}
             messagePlaceholder={messageInputPlaceholder}
-            isBorder={true}
+            isBorder={false}
             borderRadius="0"
-            backgroundColor="red"
+            backgroundColor="white"
             leftRightPadding="12px"
             topBottomPadding="20px"
             gap="20px"
@@ -114,6 +139,14 @@ export default function Offers({
         <ContactItems>
           <InfoLine>{phoneNumber}</InfoLine>
           <InfoLine>{email}</InfoLine>
+          <SocialWrapper>
+            <SocialIcons
+              width="20px"
+              height="20px"
+              socialMedia={socialMedia}
+              color="#968068"
+            />
+          </SocialWrapper>
         </ContactItems>
       </ContentWrapper>
       <PhotoWrapper>
@@ -137,7 +170,7 @@ export default function Offers({
         socialHoverColor="#6e6e6e"
         letterSpacing="2px"
       />
-    </div>
+    </Wrapper>
   );
 }
 

@@ -2,6 +2,8 @@ import { Navbar, Footer, ServiceCards } from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
+import ArrowDown from "../assets/arrow-down";
+import { useRef } from "react";
 
 const HeaderWrapper = styled.div`
   height: 90vh;
@@ -58,7 +60,12 @@ export default function Offers({
     familiesTitle,
   },
 }) {
-  console.log(weddingOffers);
+  const myRef = useRef(null);
+
+  const executeScroll = () => {
+    myRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    console.log(myRef);
+  };
 
   const modifiedWeddingOffers = weddingOffers.map((offer) => {
     return {
@@ -76,7 +83,6 @@ export default function Offers({
     };
   });
 
-  console.log("modifiedWeddingOffers", modifiedWeddingOffers);
   return (
     <div>
       <Navbar
@@ -95,8 +101,9 @@ export default function Offers({
         <PageStatement>{pageText.content[1].content[0].value}</PageStatement>
 
         <Separator />
+        <ArrowDown onClick={executeScroll} />
       </HeaderWrapper>
-      <WeddingWrapper>
+      <WeddingWrapper ref={myRef}>
         <PageTitle>{wedingTitle}</PageTitle>
         <ServiceStatement>
           {weddingText.content[0].content[0].value}

@@ -2,6 +2,8 @@ import { Navbar, Button, Footer, Calendar } from "r-componentsxxxxxxxxxxx";
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
+import ArrowDown from "../assets/arrow-down";
+import { useRef } from "react";
 
 const HeaderWrapper = styled.div`
   height: 110vh;
@@ -60,7 +62,12 @@ export default function Kalendorius({
     footer,
   },
 }) {
-  console.log("navbar", navbar);
+  const myRef = useRef(null);
+
+  const executeScroll = () => {
+    myRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    console.log(myRef);
+  };
 
   return (
     <div>
@@ -79,9 +86,10 @@ export default function Kalendorius({
         <PageStatement>{pageStatement}</PageStatement>
         <PageText>{pageText}</PageText>
         <Separator />
+        <ArrowDown onClick={executeScroll} />
       </HeaderWrapper>
 
-      <CalendarWrapper>
+      <CalendarWrapper ref={myRef}>
         {calendar.map((date) => (
           <Calendar
             key={date.sys.id}
