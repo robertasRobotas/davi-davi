@@ -10,6 +10,11 @@ import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
 
+const SliderWrapper = styled.div`
+  width: calc(100% - 32px);
+  margin: auto;
+`;
+
 const HeaderWrapper = styled.div`
   padding-top: 240px;
   padding-bottom: 240px;
@@ -60,16 +65,18 @@ export default function Home({
         maxWidth={"1200px"}
         mobileVersionMaxWidth="767px"
         logoSrc={logo.src}
-        logoWidthPx={240}
+        logoWidthPx={280}
         minWebsiteWidth="400px"
         fontSize="16px"
       />
-      <PhotoSlider
-        sliderHeight="calc(100vh - 100px)"
-        photoSrcArray={photoArray}
-        photoShowDurationSec={6}
-        switcherColor="white"
-      />
+      <SliderWrapper>
+        <PhotoSlider
+          sliderHeight="calc(100vh - 116px)"
+          photoSrcArray={photoArray}
+          photoShowDurationSec={6}
+          switcherColor="white"
+        />
+      </SliderWrapper>
       <HeaderWrapper>
         <HeaderTitleWrapper>{headerTitle}</HeaderTitleWrapper>
         <HeaderTextWrapper>{headerText}</HeaderTextWrapper>
@@ -82,8 +89,8 @@ export default function Home({
         text={aboutMeText}
         mobileVersionMaxWidth="767px"
         backgroundColor="#DFE4ED"
-        photoWidth="400px"
-        photoHeight="600px"
+        photoWidth="500px"
+        photoHeight="820px"
       />
 
       <ButtonWrapper>

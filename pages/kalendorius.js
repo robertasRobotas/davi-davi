@@ -12,9 +12,12 @@ const HeaderWrapper = styled.div`
 
 const PageTitle = styled.div`
   text-align: center;
-  padding-top: 100px;
+  padding-top: 160px;
   padding-left: 30px;
   padding-right: 30px;
+  font-size: 34px;
+  font-weight: 200;
+  color: #3e3e3e;
 `;
 
 const PageStatement = styled.div`
@@ -22,6 +25,9 @@ const PageStatement = styled.div`
   padding-top: 50px;
   padding-left: 30px;
   padding-right: 30px;
+  font-size: 24px;
+  color: #968068;
+  font-weight: 200;
 `;
 
 const PageText = styled.div`
@@ -30,12 +36,18 @@ const PageText = styled.div`
   padding-left: 30px;
   padding-right: 30px;
   line-height: 1.6;
+  font-weight: 200;
+  font-size: 20px;
 `;
 
 const Separator = styled.hr`
   text-align: center;
-  margin-top: 25px;
+  margin-top: 60px;
   width: 200px;
+`;
+
+const MonthTitle = styled.div`
+  margin-bottom: 20px;
 `;
 
 const CalendarWrapper = styled.div`
@@ -49,6 +61,10 @@ const CalendarWrapper = styled.div`
   @media (max-width: 767px) {
     grid-template-columns: 90%;
 
+`;
+
+const BottomPhoto = styled.div`
+  margin-bottom: 20px;
 `;
 
 export default function Kalendorius({
@@ -65,8 +81,7 @@ export default function Kalendorius({
   const myRef = useRef(null);
 
   const executeScroll = () => {
-    myRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    console.log(myRef);
+    myRef?.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
   return (
@@ -91,18 +106,24 @@ export default function Kalendorius({
 
       <CalendarWrapper ref={myRef}>
         {calendar.map((date) => (
-          <Calendar
-            key={date.sys.id}
-            type="availability-of-specific-month"
-            displayYearMonth="2022-05"
-            bookedDays={["2022-05-03", "2022-05-08", "2022-05-14"]}
-            monthDayNames={["P", "A", "T", "K", "P", "Š", "S"]}
-            isDisplaymonth={false}
-            isDisplayYear={false}
-            monthLinesNumber={6}
-          />
+          <div key={date.sys.id}>
+            <MonthTitle>{date.fields.title}</MonthTitle>
+            <Calendar
+              key={date.sys.id}
+              type="availability-of-specific-month"
+              displayYearMonth={date.fields.monthYear}
+              bookedDays={date.fields.bookedDays}
+              monthDayNames={["P", "A", "T", "K", "P", "Š", "S"]}
+              isDisplaymonth={false}
+              isDisplayYear={false}
+              monthLinesNumber={6}
+            />
+          </div>
         ))}
       </CalendarWrapper>
+
+      <BottomPhoto />
+
       <Footer
         type="logo-contacts-footer"
         socialMedia={footer.fields.socialMedia}

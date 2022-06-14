@@ -27,7 +27,7 @@ export default function navbar({
         maxWidth={"1200px"}
         mobileVersionMaxWidth="767px"
         logoSrc={logo.src}
-        logoWidthPx={240}
+        logoWidthPx={280}
         minWebsiteWidth="400px"
         fontSize="16px"
       />
