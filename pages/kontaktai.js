@@ -129,6 +129,7 @@ export default function Offers({
         logoWidthPx={240}
         minWebsiteWidth="400px"
         fontSize="16px"
+        backgroundColor="#f8f9fa"
       />
 
       <ContentWrapper>
