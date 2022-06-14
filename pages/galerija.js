@@ -44,9 +44,22 @@ const CategoryPhoto = styled.div`
   }
 `;
 
+const Title = styled.div`
+  font-size: 34px;
+  text-align: center;
+  font-weight: 200;
+  color: #3e3e3e;
+`;
+
+const ReviewWrapper = styled.div`
+  font-weight: 200;
+`;
+
 const CategoryWrapper = styled.div`
   width: 320px;
   height: 320px;
+  background-image: ${(props) => `url(${props.coloredPhoto})`};
+
   background-image: ${(props) => `url(${props.background})`};
 
   background-repeat: no-repeat;
@@ -54,14 +67,16 @@ const CategoryWrapper = styled.div`
   background-position: center;
   cursor: pointer;
 
-  &:after {
-    opacity: 0;
-    content: ${(props) => `url(${props.coloredPhoto})`};
-  }
-
   &:hover ${CategoryPhoto} {
     background-image: ${(props) => `url(${props.coloredPhoto})`};
   }
+`;
+
+const Loader = styled.div`
+  height: 1px;
+  width: 1px;
+  opacity: 0;
+  background-image: ${(props) => `url(${props.coloredPhoto})`};
 `;
 
 export default function Galerija({
@@ -103,6 +118,8 @@ export default function Galerija({
       <CategoriesWrapper>
         {selectableCategories.map((category, index) => (
           <a key={index} href="#">
+            <Loader coloredPhoto={category.coloredPhoto.url} />
+
             <CategoryWrapper
               background={category.backgroundPhoto.url}
               coloredPhoto={category.coloredPhoto.url}
@@ -115,17 +132,21 @@ export default function Galerija({
           </a>
         ))}
       </CategoriesWrapper>
-      <ReviewCards
-        type="simple-carousel-review"
-        reviews={reviewsTransformet}
-        mobileVersionMaxWidth="767px"
-        backgroundColor="#DFE4ED"
-        minWebsiteWidth={"375px"}
-        color="#3E3E3E"
-        letterSpacing="2px"
-        intervalTime={6000}
-        autoPlay={true}
-      />
+
+      <Title>{reviewTitle}</Title>
+      <ReviewWrapper>
+        <ReviewCards
+          type="simple-carousel-review"
+          reviews={reviewsTransformet}
+          mobileVersionMaxWidth="767px"
+          backgroundColor="#DFE4ED"
+          minWebsiteWidth={"375px"}
+          color="#3E3E3E"
+          letterSpacing="2px"
+          intervalTime={6000}
+          autoPlay={true}
+        />
+      </ReviewWrapper>
       <Footer
         type="logo-contacts-footer"
         socialMedia={footer.fields.socialMedia}

@@ -14,6 +14,8 @@ const PageTitle = styled.div`
   padding-top: 100px;
   padding-left: 30px;
   padding-right: 30px;
+  font-weight: 200;
+  font-size: 30px;
 `;
 
 const PageStatement = styled.div`
@@ -21,6 +23,7 @@ const PageStatement = styled.div`
   padding-top: 50px;
   padding-left: 30px;
   padding-right: 30px;
+  font-weight: 200;
 `;
 
 const ServiceStatement = styled.div`
@@ -32,11 +35,12 @@ const ServiceStatement = styled.div`
   margin: auto;
   line-height: 1.8;
   margin-bottom: 100px;
+  font-weight: 200;
 `;
 
 const Separator = styled.hr`
   text-align: center;
-  margin-top: 25px;
+  margin-top: 55px;
   width: 200px;
 `;
 
@@ -63,7 +67,8 @@ export default function Offers({
   const myRef = useRef(null);
 
   const executeScroll = () => {
-    myRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    myRef?.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
     console.log(myRef);
   };
 

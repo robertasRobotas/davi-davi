@@ -20,16 +20,34 @@ const ContentWrapper = styled.div`
   margin-bottom: 100px;
   margin-top: 100px;
 
-  paddin
+  @media (max-width: 767px) {
+    grid-template-columns: 80%;
+  }
 `;
 const FormWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  order: 1;
+
+  @media (max-width: 767px) {
+    order: 2;
+  }
 `;
 const ContactItems = styled.div`
+  display: flex;
+  flex-direction: column;
   border-left: 1px solid black;
   height: 460px;
   padding: 40px;
+  order: 2;
+
+  @media (max-width: 767px) {
+    order: 1;
+    border-left: none;
+    text-align: center;
+    height: 260px;
+  }
 `;
 
 const InfoLine = styled.div`
@@ -71,6 +89,11 @@ const Button = styled.div`
 
 const SocialWrapper = styled.div`
   width: 80px;
+
+  @media (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const submitButton = <Button>Send</Button>;
