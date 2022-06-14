@@ -8,9 +8,11 @@ const CategoriesWrapper = styled.div`
   gap: 40px;
   grid-template-columns: 40% 40%;
   justify-content: center;
+  margin: auto;
   margin-bottom: 100px;
   margin-top: 100px;
   min-width: 375px;
+  max-width: 1200px;
 
   justify-content: space-evenly;
   justify-items: center;
@@ -51,6 +53,11 @@ const CategoryWrapper = styled.div`
   background-size: cover;
   background-position: center;
   cursor: pointer;
+
+  &:after {
+    opacity: 0;
+    content: ${(props) => `url(${props.coloredPhoto})`};
+  }
 
   &:hover ${CategoryPhoto} {
     background-image: ${(props) => `url(${props.coloredPhoto})`};

@@ -3291,10 +3291,10 @@
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
 
-"r-componentsxxxxxxxxxxx@^0.1.55":
-  "integrity" "sha512-GlmmtqAvRXOuZTz+MtzjOv49BkSdbzyIk+YYEGWVoI1AM/i2fMT6G5F1gvk2y8E3CgWMelBO+5APBe6MnaQGQQ=="
-  "resolved" "https://registry.npmjs.org/r-componentsxxxxxxxxxxx/-/r-componentsxxxxxxxxxxx-0.1.55.tgz"
-  "version" "0.1.55"
+"r-componentsxxxxxxxxxxx@^0.1.57":
+  "integrity" "sha512-dxW05cTxWHGxCLGKWq/uoIarFghPoWHanrnbYqhBvk3dSP+NEH1Cp6P9wL9b0vZD2O2r/+ZfxaKUIVu3HFrJ7g=="
+  "resolved" "https://registry.npmjs.org/r-componentsxxxxxxxxxxx/-/r-componentsxxxxxxxxxxx-0.1.57.tgz"
+  "version" "0.1.57"
   dependencies:
     "@emailjs/browser" "^3.4.0"
     "@types/styled-components" "^5.1.24"

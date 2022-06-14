@@ -4,6 +4,7 @@ import { createClient } from "contentful";
 import styled from "styled-components";
 import ArrowDown from "../assets/arrow-down";
 import { useRef } from "react";
+import Link from "next/link";
 
 const HeaderWrapper = styled.div`
   height: 110vh;
@@ -63,8 +64,23 @@ const CalendarWrapper = styled.div`
 
 `;
 
+const ButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
 const BottomPhoto = styled.div`
-  margin-bottom: 20px;
+  position: relative;
+  background-image: ${(props) => `url(${props.backgroundImage})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 550px;
+  width: calc(80% + 50px);
+  margin: auto;
+  margin-bottom: 100px;
 `;
 
 export default function Kalendorius({
@@ -79,7 +95,7 @@ export default function Kalendorius({
   },
 }) {
   const myRef = useRef(null);
-
+  console.log(bottomPhoto);
   const executeScroll = () => {
     myRef?.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
@@ -122,7 +138,21 @@ export default function Kalendorius({
         ))}
       </CalendarWrapper>
 
-      <BottomPhoto />
+      <BottomPhoto backgroundImage={bottomPhoto.fields.file.url}>
+        <ButtonWrapper>
+          <Link href="/kontaktai">
+            <Button
+              type="enter-button"
+              mainColor="#BCA183"
+              invertedColor="white"
+              fontSize="16px"
+              content="Žiūrėti"
+              width="160px"
+              height="45px"
+            />
+          </Link>
+        </ButtonWrapper>
+      </BottomPhoto>
 
       <Footer
         type="logo-contacts-footer"

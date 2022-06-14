@@ -5,16 +5,25 @@ import styled, { css } from "styled-components";
 import { RightArrow } from "../assets/rightArrow";
 import { LeftArrow } from "../assets/leftArrow";
 
-export const CarouselWrapper = styled.div<any>`
+export const CarouselWrapper =
+  styled.div <
+  any >
+  `
   min-width: 375px;
 `;
 
-export const Wrapper = styled.div<any>`
+export const Wrapper =
+  styled.div <
+  any >
+  `
   padding-top: 200px;
   color: ${(props) => props.color};
 `;
 
-export const ItemsWrapper = styled.div<any>`
+export const ItemsWrapper =
+  styled.div <
+  any >
+  `
   width: 100%;
   height: auto;
   min-height: 430px;
@@ -32,7 +41,10 @@ export const ItemsWrapper = styled.div<any>`
   }
 `;
 
-export const ContentWrapper = styled.div<any>`
+export const ContentWrapper =
+  styled.div <
+  any >
+  `
   max-width: 1400px;
   display: flex;
   gap: 3%;
@@ -44,7 +56,10 @@ export const ContentWrapper = styled.div<any>`
   }
 `;
 
-export const PhotoWrapper = styled.div<any>`
+export const PhotoWrapper =
+  styled.div <
+  any >
+  `
   height: 0;
   width: 35%;
   order: 1;
@@ -59,7 +74,10 @@ export const PhotoWrapper = styled.div<any>`
   }
 `;
 
-export const Photo = styled.div<any>`
+export const Photo =
+  styled.div <
+  any >
+  `
   background-image: ${(props: any) => `url(${props.photoUrl})`};
   background-repeat: no-repeat;
   background-size: cover;
@@ -75,7 +93,10 @@ export const Photo = styled.div<any>`
   }
 `;
 
-export const TextWrapper = styled.div<any>`
+export const TextWrapper =
+  styled.div <
+  any >
+  `
   letter-spacing: ${(props) => props.letterSpacing};
   order: 2;
 
@@ -84,7 +105,10 @@ export const TextWrapper = styled.div<any>`
   }
 `;
 
-export const Title = styled.div<any>`
+export const Title =
+  styled.div <
+  any >
+  `
   font-size: 40px;
   text-align: left;
   position: relative;
@@ -92,7 +116,10 @@ export const Title = styled.div<any>`
   left: 60px;
 `;
 
-export const ReviewText = styled.div<any>`
+export const ReviewText =
+  styled.div <
+  any >
+  `
   width: auto;
   max-width: 800px;
   padding: 50px 30px;
@@ -106,7 +133,10 @@ export const ReviewText = styled.div<any>`
   }
 `;
 
-export const RightArrowWrapper = styled.div<any>`
+export const RightArrowWrapper =
+  styled.div <
+  any >
+  `
   z-index: 10;
   position: absolute;
   top: 60%;
@@ -118,7 +148,10 @@ export const RightArrowWrapper = styled.div<any>`
   }
 `;
 
-export const LeftArrowWrapper = styled.div<any>`
+export const LeftArrowWrapper =
+  styled.div <
+  any >
+  `
   z-index: 10;
   position: absolute;
   top: 60%;

@@ -9,6 +9,7 @@ import {
 import logo from "../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
+import Link from "next/link";
 
 const SliderWrapper = styled.div`
   width: calc(100% - 32px);
@@ -94,16 +95,17 @@ export default function Home({
       />
 
       <ButtonWrapper>
-        <Button
-          type="underlined-botton"
-          mainColor="#707070"
-          invertedColor="white"
-          fontSize="16px"
-          content="GALERIJA"
-          width="125px"
-          height="45px"
-          onClick={() => console.log("c")}
-        />
+        <Link href="/galerija">
+          <Button
+            type="underlined-botton"
+            mainColor="#707070"
+            invertedColor="white"
+            fontSize="16px"
+            content="GALERIJA"
+            width="125px"
+            height="45px"
+          />
+        </Link>
       </ButtonWrapper>
       <PhotoLineWrapper>
         <PhotoLine photoArray={photoArray} mobileVersionMaxWidth="767px" />
