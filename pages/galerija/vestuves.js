@@ -1,5 +1,5 @@
-import { Navbar, Footer, ReviewCards } from "r-componentsxxxxxxxxxxx";
-import logo from "../assets/davidavi-logo-black.png";
+import { Navbar, Footer, GalleryItems } from "r-componentsxxxxxxxxxxx";
+import logo from "../../assets/davidavi-logo-black.png";
 import { createClient } from "contentful";
 import styled from "styled-components";
 
@@ -80,27 +80,17 @@ const Loader = styled.div`
 `;
 
 export default function Galerija({
-  galleryPage: { categories, footer, navbar, reviewTitle, reviews },
+  galleryPage: { navbar, footer, categoryTitle, categoryPhotoItems },
 }) {
-  console.log(reviews);
+  console.log("categoryPhotoItems", categoryPhotoItems);
 
-  const selectableCategories = categories.map((category) => {
+  const galeryItems = categoryPhotoItems.map((item) => {
     return {
-      backgroundPhoto: category.fields.backgroundPhoto.fields.file,
-      coloredPhoto: category.fields.coloredPhoto.fields.file,
-      uncoloredPhoto: category.fields.uncoloredPhoto.fields.file,
+      title: item.fields.title,
+      photo: item.fields.mainPhotoColor.fields.file.url,
+      onClickLink: item.sys.id,
     };
   });
-
-  const reviewsTransformet = reviews.map((review) => {
-    return {
-      photo: review.fields.reviewPhoto.fields.file.url,
-      reviewerName: review.fields.reviewTitle,
-      reviewText: review.fields.reviewText.content[0].content[0].value,
-    };
-  });
-
-  console.log("selectableCategories", selectableCategories);
 
   return (
     <div>
@@ -115,38 +105,16 @@ export default function Galerija({
         fontSize="16px"
       />
 
-      <CategoriesWrapper>
-        {selectableCategories.map((category, index) => (
-          <a key={index} href="#">
-            <Loader coloredPhoto={category.coloredPhoto.url} />
+      <GalleryItems
+        type="simple-items-changing-sides"
+        itemsArray={galeryItems}
+        buttonContent="Žiūreti"
+        backgroundHoverColor="#DFE4ED"
+        buttonColor="#BCA183"
+        mobileVersionMaxWidth="767px"
+        color="#707070"
+      />
 
-            <CategoryWrapper
-              background={category.backgroundPhoto.url}
-              coloredPhoto={category.coloredPhoto.url}
-            >
-              <CategoryPhoto
-                uncoloredPhoto={category.uncoloredPhoto.url}
-                coloredPhoto={category.coloredPhoto.url}
-              ></CategoryPhoto>
-            </CategoryWrapper>
-          </a>
-        ))}
-      </CategoriesWrapper>
-
-      <Title>{reviewTitle}</Title>
-      <ReviewWrapper>
-        <ReviewCards
-          type="simple-carousel-review"
-          reviews={reviewsTransformet}
-          mobileVersionMaxWidth="767px"
-          backgroundColor="#DFE4ED"
-          minWebsiteWidth={"375px"}
-          color="#3E3E3E"
-          letterSpacing="2px"
-          intervalTime={6000}
-          autoPlay={true}
-        />
-      </ReviewWrapper>
       <Footer
         type="logo-contacts-footer"
         socialMedia={footer.fields.socialMedia}
@@ -174,9 +142,9 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries({ content_type: "galleryPage" });
+  const res = await client.getEntry("1YQ4Z6isWURuRE8fH3nVW4");
 
   return {
-    props: { galleryPage: res.items[0].fields },
+    props: { galleryPage: res.fields },
   };
 }
