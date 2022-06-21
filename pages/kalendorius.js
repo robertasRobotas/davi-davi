@@ -146,7 +146,7 @@ export default function Kalendorius({
               mainColor="#BCA183"
               invertedColor="white"
               fontSize="16px"
-              content="Žiūrėti"
+              content="Susisiekti"
               width="160px"
               height="45px"
             />

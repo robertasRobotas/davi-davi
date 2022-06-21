@@ -12,7 +12,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const SliderWrapper = styled.div`
-  width: calc(100% - 32px);
+  width: calc(100% - 40px);
   margin: auto;
 `;
 
@@ -27,10 +27,12 @@ const HeaderWrapper = styled.div`
 const HeaderTitleWrapper = styled.div`
   text-align: center;
   margin-bottom: 30px;
+  font-size: 20px;
 `;
 
 const HeaderTextWrapper = styled.div`
   text-align: center;
+  font-size: 18px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -72,7 +74,7 @@ export default function Home({
       />
       <SliderWrapper>
         <PhotoSlider
-          sliderHeight="calc(100vh - 116px)"
+          sliderHeight="calc(100vh - 120px)"
           photoSrcArray={photoArray}
           photoShowDurationSec={6}
           switcherColor="white"

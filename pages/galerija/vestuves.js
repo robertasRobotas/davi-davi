@@ -49,10 +49,8 @@ const Title = styled.div`
   text-align: center;
   font-weight: 200;
   color: #3e3e3e;
-`;
-
-const ReviewWrapper = styled.div`
-  font-weight: 200;
+  margin-top: 100px;
+  margin-bottom: 100px;
 `;
 
 const CategoryWrapper = styled.div`
@@ -70,13 +68,6 @@ const CategoryWrapper = styled.div`
   &:hover ${CategoryPhoto} {
     background-image: ${(props) => `url(${props.coloredPhoto})`};
   }
-`;
-
-const Loader = styled.div`
-  height: 1px;
-  width: 1px;
-  opacity: 0;
-  background-image: ${(props) => `url(${props.coloredPhoto})`};
 `;
 
 export default function Galerija({
@@ -104,6 +95,8 @@ export default function Galerija({
         minWebsiteWidth="400px"
         fontSize="16px"
       />
+
+      <Title>{categoryTitle}</Title>
 
       <GalleryItems
         type="simple-items-changing-sides"
@@ -136,11 +129,13 @@ export default function Galerija({
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(params) {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
+
+  console.log("params", params);
 
   const res = await client.getEntry("1YQ4Z6isWURuRE8fH3nVW4");
 

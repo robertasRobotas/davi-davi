@@ -27,8 +27,14 @@ const ContentWrapper = styled.div`
 const FormWrapper = styled.div`
   display: flex;
   align-items: center;
-
+  width: 450px;
+  float: right;
   order: 1;
+  margin-left: auto;
+
+  @media (max-width: 1150px) {
+    width: 100%;
+  }
 
   @media (max-width: 767px) {
     order: 2;

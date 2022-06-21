@@ -26,8 +26,8 @@ const CategoriesWrapper = styled.div`
 
 const CategoryPhoto = styled.div`
   position: relative;
-  left: 60px;
-  top: 60px;
+  left: 80px;
+  top: 70px;
 
   background-image: ${(props) => `url(${props.uncoloredPhoto})`};
 
@@ -36,8 +36,15 @@ const CategoryPhoto = styled.div`
   background-position: center;
   transition: 0.3s;
 
-  width: 280px;
-  height: 200px;
+  width: 340px;
+  height: 260px;
+
+  @media (max-width: 1000px) {
+    left: 60px;
+    top: 60px;
+    width: 280px;
+    height: 200px;
+  }
 
   &:hover {
     background-image: ${(props) => `url(${props.coloredPhoto})`};
@@ -56,8 +63,8 @@ const ReviewWrapper = styled.div`
 `;
 
 const CategoryWrapper = styled.div`
-  width: 320px;
-  height: 320px;
+  width: 420px;
+  height: 400px;
   background-image: ${(props) => `url(${props.coloredPhoto})`};
 
   background-image: ${(props) => `url(${props.background})`};
@@ -66,6 +73,11 @@ const CategoryWrapper = styled.div`
   background-size: cover;
   background-position: center;
   cursor: pointer;
+
+  @media (max-width: 1000px) {
+    width: 320px;
+    height: 320px;
+  }
 
   &:hover ${CategoryPhoto} {
     background-image: ${(props) => `url(${props.coloredPhoto})`};
@@ -82,13 +94,12 @@ const Loader = styled.div`
 export default function Galerija({
   galleryPage: { categories, footer, navbar, reviewTitle, reviews },
 }) {
-  console.log(reviews);
-
   const selectableCategories = categories.map((category) => {
     return {
       backgroundPhoto: category.fields.backgroundPhoto.fields.file,
       coloredPhoto: category.fields.coloredPhoto.fields.file,
       uncoloredPhoto: category.fields.uncoloredPhoto.fields.file,
+      link: category.fields.link,
     };
   });
 
@@ -99,8 +110,6 @@ export default function Galerija({
       reviewText: review.fields.reviewText.content[0].content[0].value,
     };
   });
-
-  console.log("selectableCategories", selectableCategories);
 
   return (
     <div>
@@ -117,7 +126,7 @@ export default function Galerija({
 
       <CategoriesWrapper>
         {selectableCategories.map((category, index) => (
-          <a key={index} href="#">
+          <a key={index} href={`/galerija/${category.link}`}>
             <Loader coloredPhoto={category.coloredPhoto.url} />
 
             <CategoryWrapper
