@@ -78,7 +78,7 @@ export const Photo =
   styled.div <
   any >
   `
-  background-image: ${(props: any) => `url(${props.photoUrl})`};
+  background-image: ${(props) => `url(${props.photoUrl})`};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
